@@ -1,0 +1,26 @@
+
+-- ex00 --
+javac ex00/Program.java && java ex00/Program --count=50
+
+
+-- ex01 --
+javac ex01/Program.java && java ex01/Program --count=50
+
+
+-- ex02 --
+javac ex02/Program.java && java ex02/Program --arraySize=13 --threadsCount=3
+---== result ==--
+Sum: 13
+Thread 1: from 0 to 4 sum is 5
+Thread 2: from 5 to 9 sum is 5
+Thread 3: from 10 to 12 sum is 3
+Sum by threads: 13
+---== result ==--
+
+
+-- ex03 --
+javac ex03/Program.java && java ex03/Program --threadsCount=3
+
+
+-- clean *.class --
+rm -rf ex0?/*.class

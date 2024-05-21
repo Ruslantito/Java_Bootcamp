@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.school21</groupId>
+  <artifactId>Tests</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Tests</name>
+
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.0.0</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>6.0.12</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+        <type>maven-plugin</type>
+    </dependency>
+
+
+    <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>4.0.3</version>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.6.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.7</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-nop</artifactId>
+        <version>2.0.7</version>
+    </dependency>
+
+
+
+
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>RELEASE</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.9.3</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>5.9.3</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.9.3</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+
+  <build>
+      <plugins>
+
+        <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId> 
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath> 
+                        <mainClass>edu.school21.numbers.NumberWorker</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4.3</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <phase>package</phase>
+            </execution>
+        </executions>
+        </plugin> -->
+
+
+        
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.1.2</version>
+            <configuration>
+                <argLine>
+                    --illegal-access=permit
+                </argLine>
+                <testFailureIgnore>true</testFailureIgnore>
+                <forkCount>2</forkCount>
+                <reuseForks>true</reuseForks>
+                <argLine>${surefireArgLine}</argLine> 
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.7</version>
+            <executions>
+                <execution>
+                    <id>default-prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                    <configuration>
+                        <destFile>${project.build.directory}/coverage-reports/jacoco.exec</destFile>
+                        <propertyName>surefireArgLine</propertyName>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>default-report</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                    <configuration>
+                        <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
+                        <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>default-check</id>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                    <configuration>
+                        <rules>
+                            <rule>
+                                <element>BUNDLE</element>
+                                <limits>
+                                    <limit>
+                                        <counter>COMPLEXITY</counter>
+                                        <value>COVEREDRATIO</value>
+                                        <minimum>0.70</minimum>
+                                    </limit>
+                                </limits>
+                            </rule>
+                        </rules>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+
+      </plugins>
+  </build>
+</project>

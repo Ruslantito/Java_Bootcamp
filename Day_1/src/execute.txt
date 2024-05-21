@@ -1,0 +1,27 @@
+
+-- ex00 --
+javac ex00/Program.java && java ex00/Program
+
+-- ex01 --
+javac ex01/Program.java && java ex01/Program
+
+
+-- ex02 --
+javac ex02/Program.java && java ex02/Program
+
+
+-- ex03 --
+javac ex03/Program.java && java ex03/Program
+
+
+-- ex04 --
+javac ex04/Program.java && java ex04/Program
+
+
+-- ex05 --
+javac ex05/Program.java && java ex05/Program
+javac ex05/Program.java && java ex05/Program --profile=dev
+
+
+-- clean *.class --
+rm -rf ex0?/*.class

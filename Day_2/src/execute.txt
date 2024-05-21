@@ -1,0 +1,19 @@
+
+-- ex00 --
+javac ex00/Program.java && java ex00/Program
+pics/zahodi.jpg
+pics/zahodi.jpg.zip
+pics/111.png
+pics/222.txt
+
+
+-- ex01 --
+javac ex01/Program.java && java ex01/Program ex01/inputA.txt ex01/inputB.txt
+java ex01/Program ex01/inputA.txt ex01/inputC.txt
+
+
+-- ex02 --
+javac ex02/Program.java && java ex02/Program --current-folder=.
+
+-- clean *.class --
+rm -rf ex0?/*.class
